@@ -1,6 +1,6 @@
 {
   "name": "codex-dsh-executor-bridge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "External MCP executor that runs bounded DeepSeek Harness (DSH) tasks for a Codex main planner/reviewer.",
   "license": "MIT",
   "type": "module",
