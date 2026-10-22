@@ -83,4 +83,4 @@ Codex 强主模型 → 拆分任务/明确边界与验收条件
 
 ## 源码与隐私
 
-源自 MIT 项目 [deepseek-harness-codex-bridge](https://github.com/Aloneswork/deepseek-harness-codex-bridge)，来源与变更见 [NOTICE.md](NOTICE.md)。它是社区桥接器。
+源自项目 [deepseek-harness-codex-bridge](https://github.com/Aloneswork/deepseek-harness-codex-bridge)，来源与变更见 [NOTICE.md](NOTICE.md)。它是社区桥接器。
