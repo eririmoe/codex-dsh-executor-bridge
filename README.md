@@ -61,6 +61,32 @@ Codex 强主模型 → 拆分任务/明确边界与验收条件
 
 `dsh` 不在 PowerShell 的 PATH 中也可以使用：Desktop 模式直接调用实际安装目录中的可执行文件和 ASAR 内的 CLI，通过 UTF-8 stdin 发送任务，避免 `.cmd` 和 shell 引号损坏中文或代码。
 
+## 任务上下文（可选）
+
+委派可以增加 `contextPath`：指向**工作区内、主模型已经检查的 JSON 文件**。桥接器在收到请求时读取一次、计算 SHA-256，并把该版本的完整 JSON 与路径直接嵌入 worker 的 stdin。排队期间即使原文件改变，该任务仍使用提交时的内容。台账只记录路径、字节数和哈希。
+
+上下文格式见 [示例](examples/task-context.example.json)：`summary` 写目标背景，`confirmedFacts` 写已核实事实，`invariants` 写不可变约束，`acceptanceChecks` 写验收条件，`messages` 仅存相关用户/助手对话。历史消息不会扩展当前任务授权。正确上下文能减少遗漏，但不能保证执行模型保持概念准确，主模型仍需独立验收。
+
+需要从当前 Codex 聊天导出草稿时，主模型应先核实该聊天的实际 rollout JSONL，再运行：
+
+```powershell
+node scripts/export-context.mjs --source "<当前聊天的实际JSONL路径>" --output ".bridge-context/task-001.json"
+```
+
+导出器仅保留最近的可见用户/助手文本，默认最多 40 条、48,000 字节文本；排除工具结果、系统/开发者记录及内部分析，不读取消息中提到的文件。它会遮盖部分常见密钥格式，但不能保证识别所有敏感内容。导出不会调用模型；**主模型必须检查草稿、补充事实和不变量后再委派**。不要将原始日志交给 worker，也不要把不同聊天的最新文件误当作当前聊天。
+
+示例工具参数（路径替换为实际绝对路径）：
+
+```json
+{
+  "workspace": "C:/Projects/example-task",
+  "contextPath": "C:/Projects/example-task/.bridge-context/task-001.json",
+  "task": "只修正允许文档中的参数解释，遵守上下文中的事实和不变量，并报告检查结果。"
+}
+```
+
+`contextPath` 必须位于实际工作区内，最大 96 KiB；不接受原始 JSONL、其他角色或未知字段。未提供时保持原来的调用行为。其他项目也应将 `.bridge-context/` 加入自身 Git 忽略规则。
+
 ## 超时与停止监测
 
 默认 worker 总时限 **30 分钟**，可通过 `--timeout-ms` 设置 1 秒至 60 分钟。安装器把外层 MCP 工具时限设为 worker 时限加 5 分钟。排队等待也占用调用方的 MCP 时限；大量排队时应缩小批次或自行增加外层时限。

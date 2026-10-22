@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "summary": "主模型已经确认统计定义；本次只修正文档措辞。",
+  "confirmedFacts": ["zero_usage_fraction 的统计单位是供体。"],
+  "invariants": ["保持公式、统计单位和输入矩阵方向不变。", "不得将零使用率改写为无覆盖或读段比例。"],
+  "acceptanceChecks": ["每处相关定义均明确写供体比例。", "仅修改任务允许的文档，不修改分析代码。"],
+  "messages": [
+    {"role": "user", "text": "请按已核实定义解释参数。"},
+    {"role": "assistant", "text": "已确认单位为供体；当前任务只编辑说明文本。"}
+  ]
+}

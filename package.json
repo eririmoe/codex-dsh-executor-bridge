@@ -1,6 +1,6 @@
 {
   "name": "codex-dsh-executor-bridge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "External MCP executor that runs bounded DeepSeek Harness (DSH) tasks for a Codex main planner/reviewer.",
   "license": "MIT",
   "type": "module",
@@ -30,7 +30,8 @@
     "AGENTS.md",
     "NOTICE.md",
     "LICENSE",
-    "configure.mjs"
+    "configure.mjs",
+    "examples/"
   ],
   "engines": {
     "node": ">=24.0.0"
@@ -50,7 +51,8 @@
     "setup": "node setup.mjs",
     "test": "node --test test/*.test.mjs",
     "test:strict": "node scripts/test-strict.mjs",
-    "smoke": "node smoke.mjs"
+    "smoke": "node smoke.mjs",
+    "export-context": "node scripts/export-context.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.30.0",

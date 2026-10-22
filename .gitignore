@@ -1,6 +1,7 @@
 # --- dependencies ---
 node_modules/
 .state/
+.bridge-context/
 coverage/
 
 # --- local runtime configuration (never commit real paths or keys) ---
