@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "executable": "C:/Apps/DeepSeek Harness/DeepSeek Harness.exe",
+  "prefixArgs": ["--expose-internals", "C:/Apps/DeepSeek Harness/resources/app.asar/dsh/node_modules/@deepseek-ai/dsh-desktop-host/lib/cli.js"],
+  "profile": "codex-worker",
+  "home": "C:/Users/YOUR_USERNAME/.dsh",
+  "stateDir": "C:/Projects/codex-dsh-executor-bridge/.state",
+  "timeoutMs": 1800000,
+  "maxConcurrency": 4,
+  "heartbeatMs": 5000,
+  "stallWarningMs": 180000
+}

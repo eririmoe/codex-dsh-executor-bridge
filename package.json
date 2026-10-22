@@ -1,0 +1,61 @@
+{
+  "name": "codex-dsh-executor-bridge",
+  "version": "0.1.0",
+  "description": "External MCP executor that runs bounded DeepSeek Harness (DSH) tasks for a Codex main planner/reviewer.",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eririmoe/codex-dsh-executor-bridge.git"
+  },
+  "homepage": "https://github.com/eririmoe/codex-dsh-executor-bridge#readme",
+  "bugs": {
+    "url": "https://github.com/eririmoe/codex-dsh-executor-bridge/issues"
+  },
+  "bin": {
+    "codex-dsh-executor-bridge": "server.mjs",
+    "codex-dsh-setup": "setup.mjs"
+  },
+  "files": [
+    "server.mjs",
+    "setup.mjs",
+    "smoke.mjs",
+    "src/",
+    "test/",
+    "scripts/",
+    "bridge.config.example.json",
+    "README.md",
+    "CONFIGURATION.md",
+    "AGENTS.md",
+    "NOTICE.md",
+    "LICENSE",
+    "configure.mjs"
+  ],
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "codex",
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "executor",
+    "subagent"
+  ],
+  "scripts": {
+    "start": "node server.mjs",
+    "setup": "node setup.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:strict": "node scripts/test-strict.mjs",
+    "smoke": "node smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "4.4.3",
+    "yaml": "2.8.1",
+    "@iarna/toml": "2.2.5"
+  }
+}

@@ -1,0 +1,44 @@
+# --- dependencies ---
+node_modules/
+.state/
+coverage/
+
+# --- local runtime configuration (never commit real paths or keys) ---
+bridge.config.json
+bridge.config.*.json
+!bridge.config.example.json
+
+# --- credentials and environment files ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# --- runtime state, ledgers, sessions and generated worker profiles ---
+.bridge-state/
+.bridge-ledger/
+bridge-state/
+profiles/
+state/
+ledger/
+sessions/
+*.session.json
+
+# --- logs, backups and local acceptance outputs ---
+*.log
+logs/
+backups/
+*.bak
+*.bak.*
+local-acceptance/
+acceptance-out/
+acceptance-*.json
+*-acceptance.json
+
+# --- scratch / editor / OS noise ---
+*.tmp
+.DS_Store
+Thumbs.db
