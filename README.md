@@ -83,8 +83,4 @@ Codex 强主模型 → 拆分任务/明确边界与验收条件
 
 ## 源码与隐私
 
-仓库仅包含代码、测试、示例和说明。真实路径、API 地址、凭据、runtime JSON、会话、任务台账及日志保存在本机，不应提交。台账位于 `.state/tasks`；默认会话位于 DSH 自己的存储中，启用隔离时才位于 `.state/dsh`。生成的配置通常包含本机路径和所选服务路由；不要把它们当作可分享模板。任务内容会发送给你配置的模型服务，委派前请明确授权范围。
-
-测试中的 worker 是本地 Node fixture，不调用模型；`smoke.mjs` 是显式启用的真实模型文件写入测试。桥接器不会给 DSH 增加宿主 Codex 的权限；worker 使用自身 `workspace-write` 配置，依赖宿主系统与 DSH 的实际隔离能力。命令受限时应缩小任务或修改明确的本地配置，不能把关闭全部权限保护作为默认安装步骤。
-
 源自 MIT 项目 [deepseek-harness-codex-bridge](https://github.com/Aloneswork/deepseek-harness-codex-bridge)，来源与变更见 [NOTICE.md](NOTICE.md)。它是社区桥接器。
